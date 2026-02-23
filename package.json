@@ -1,0 +1,12 @@
+{
+  "name": "paigeswain",
+  "private": true,
+  "workspaces": ["frontend", "worker"],
+  "scripts": {
+    "dev": "npm --prefix frontend run dev",
+    "build": "npm --prefix frontend run build",
+    "lint": "npm --prefix frontend run lint",
+    "worker:build": "npm --prefix worker run build",
+    "worker:deploy": "npm --prefix worker run deploy"
+  }
+}

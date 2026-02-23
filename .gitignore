@@ -1,0 +1,10 @@
+/frontend/node_modules
+/worker/node_modules
+/frontend/dist
+/worker/dist
+*.log
+/.vscode
+/.idea
+/.DS_Store
+/frontend/.env*
+/worker/.env*

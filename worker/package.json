@@ -1,0 +1,16 @@
+{
+  "name": "paigeswain-worker",
+  "private": true,
+  "version": "0.1.0",
+  "type": "module",
+  "scripts": {
+    "build": "wrangler build",
+    "deploy": "wrangler deploy",
+    "check": "wrangler check"
+  },
+  "devDependencies": {
+    "@cloudflare/workers-types": "^4.20260228.0",
+    "typescript": "^5.5.2",
+    "wrangler": "^3.4.0"
+  }
+}
