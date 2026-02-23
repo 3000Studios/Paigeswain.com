@@ -1,3 +1,4 @@
+/node_modules
 /frontend/node_modules
 /worker/node_modules
 /frontend/dist
@@ -8,3 +9,4 @@
 /.DS_Store
 /frontend/.env*
 /worker/.env*
+node_modules
