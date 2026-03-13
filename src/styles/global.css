@@ -1,0 +1,96 @@
+:root {
+  font-family: "Space Grotesk", system-ui, sans-serif;
+  color: #111;
+  background: #0a0a0a;
+}
+
+* {
+  box-sizing: border-box;
+  margin: 0;
+  padding: 0;
+}
+
+body {
+  min-height: 100vh;
+  background: radial-gradient(circle at top, #f4d061, #0a0a0a 65%);
+}
+
+.navbar {
+  display: flex;
+  gap: 1rem;
+  padding: 1rem;
+  background: rgba(255, 255, 255, 0.08);
+  border-bottom: 1px solid rgba(255, 255, 255, 0.2);
+  position: sticky;
+  top: 0;
+  z-index: 10;
+}
+
+.navbar a {
+  color: #ffeaa5;
+  text-decoration: none;
+  font-weight: 600;
+}
+
+.page {
+  padding: 2rem;
+  max-width: 960px;
+  margin: 0 auto;
+}
+
+.page h1 {
+  font-family: "Playfair Display", serif;
+  letter-spacing: 0.3rem;
+  color: #fff3b0;
+  margin-bottom: 0.5rem;
+}
+
+.sunflower-scene {
+  height: 320px;
+  width: 100%;
+  margin-top: 2rem;
+  border-radius: 1rem;
+  overflow: hidden;
+  background: #030306;
+}
+
+.login-modal {
+  margin-top: 2rem;
+  padding: 1.5rem;
+  border-radius: 1rem;
+  background: rgba(255, 255, 255, 0.08);
+  display: flex;
+  flex-direction: column;
+  gap: 0.75rem;
+}
+
+.login-modal input,
+.login-modal button {
+  padding: 0.85rem 1rem;
+  border-radius: 0.75rem;
+  border: none;
+  font-size: 1rem;
+}
+
+.login-modal input {
+  background: rgba(255, 255, 255, 0.15);
+  color: #fff;
+}
+
+.login-modal button {
+  background: #ffb347;
+  font-weight: 700;
+  cursor: pointer;
+}
+
+.dashboard {
+  padding: 2rem;
+  display: grid;
+  gap: 1rem;
+}
+
+.dashboard section {
+  background: rgba(255, 255, 255, 0.08);
+  padding: 1rem;
+  border-radius: 0.75rem;
+}
