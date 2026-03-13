@@ -1,0 +1,161 @@
+{
+  "schedule": [
+    {
+      "id": "event-1",
+      "title": "Soccer Practice",
+      "details": "Jadon at the field, cleats packed and water bottle ready.",
+      "timeLabel": "Today · 5:15 PM",
+      "type": "School + Sports"
+    },
+    {
+      "id": "event-2",
+      "title": "Family Dinner Vote Closes",
+      "details": "Cast dinner votes before the kitchen plan locks in.",
+      "timeLabel": "Today · 4:30 PM",
+      "type": "Dinner"
+    },
+    {
+      "id": "event-3",
+      "title": "Art Upload Night",
+      "details": "Jerica can share new artwork after homework wraps up.",
+      "timeLabel": "Tonight · 7:00 PM",
+      "type": "Creative Time"
+    }
+  ],
+  "chores": [
+    {
+      "id": "chore-1",
+      "title": "Clean bedroom floor",
+      "assignedTo": "Jadon",
+      "assignedBy": "Paige",
+      "dueLabel": "Due today",
+      "rewardStars": 2,
+      "completed": false,
+      "createdAt": "2026-03-12T18:20:00.000Z"
+    },
+    {
+      "id": "chore-2",
+      "title": "Help fold towels",
+      "assignedTo": "Jerica",
+      "assignedBy": "Dad",
+      "dueLabel": "Before bedtime",
+      "rewardStars": 1,
+      "completed": false,
+      "createdAt": "2026-03-12T19:10:00.000Z"
+    },
+    {
+      "id": "chore-3",
+      "title": "Take out the kitchen trash",
+      "assignedTo": "Jadon",
+      "assignedBy": "Dad",
+      "dueLabel": "Completed earlier",
+      "rewardStars": 2,
+      "completed": true,
+      "completedAt": "2026-03-12T15:05:00.000Z",
+      "createdAt": "2026-03-12T10:00:00.000Z"
+    }
+  ],
+  "dinnerIdeas": [
+    {
+      "id": "dinner-1",
+      "title": "Taco Night",
+      "createdBy": "Dad",
+      "groceryHint": "Tortillas, shredded cheese, lettuce",
+      "votes": [
+        "Paige",
+        "Jadon"
+      ],
+      "createdAt": "2026-03-12T17:00:00.000Z"
+    },
+    {
+      "id": "dinner-2",
+      "title": "Baked Spaghetti",
+      "createdBy": "Paige",
+      "groceryHint": "Pasta, sauce, mozzarella",
+      "votes": [
+        "Paige"
+      ],
+      "createdAt": "2026-03-12T17:10:00.000Z"
+    }
+  ],
+  "groceryItems": [
+    {
+      "id": "grocery-1",
+      "name": "Strawberries",
+      "category": "Produce",
+      "addedBy": "Jerica",
+      "purchased": false,
+      "createdAt": "2026-03-12T12:15:00.000Z"
+    },
+    {
+      "id": "grocery-2",
+      "name": "Taco seasoning",
+      "category": "Pantry",
+      "addedBy": "Dad",
+      "purchased": false,
+      "createdAt": "2026-03-12T12:30:00.000Z"
+    },
+    {
+      "id": "grocery-3",
+      "name": "Apple juice",
+      "category": "Drinks",
+      "addedBy": "Paige",
+      "purchased": true,
+      "purchasedAt": "2026-03-12T16:45:00.000Z",
+      "createdAt": "2026-03-12T11:55:00.000Z"
+    }
+  ],
+  "requests": [
+    {
+      "id": "request-1",
+      "title": "Ride to practice",
+      "body": "Need a ride after school if the weather turns bad.",
+      "createdBy": "Jadon",
+      "status": "open",
+      "createdAt": "2026-03-12T14:20:00.000Z"
+    },
+    {
+      "id": "request-2",
+      "title": "Movie night idea",
+      "body": "Can we plan a family movie night this weekend?",
+      "createdBy": "Jerica",
+      "status": "open",
+      "createdAt": "2026-03-12T18:55:00.000Z"
+    }
+  ],
+  "rewards": [
+    {
+      "name": "Paige",
+      "stars": 8
+    },
+    {
+      "name": "Dad",
+      "stars": 6
+    },
+    {
+      "name": "Jadon",
+      "stars": 5
+    },
+    {
+      "name": "Jerica",
+      "stars": 4
+    }
+  ],
+  "activityFeed": [
+    {
+      "id": "feed-1",
+      "message": "Dad opened taco night voting for dinner.",
+      "createdAt": "2026-03-12T17:00:00.000Z"
+    },
+    {
+      "id": "feed-2",
+      "message": "Jadon finished taking out the kitchen trash and earned 2 stars.",
+      "createdAt": "2026-03-12T15:05:00.000Z"
+    },
+    {
+      "id": "feed-3",
+      "message": "Jerica added strawberries to the grocery list.",
+      "createdAt": "2026-03-12T12:15:00.000Z"
+    }
+  ]
+}

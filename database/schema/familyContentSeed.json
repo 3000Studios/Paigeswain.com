@@ -1,0 +1,93 @@
+{
+  "homeHighlights": [
+    {
+      "id": "home-1",
+      "title": "Sunflower Saturday",
+      "body": "A cozy front-porch note rail for recipes, gratitude, family wins, and the little updates Paige wants right under the hero.",
+      "author": "Paige",
+      "createdAt": "2026-03-11T15:45:00.000Z"
+    },
+    {
+      "id": "home-2",
+      "title": "Family Night Loading",
+      "body": "Game-night plans, gentle reminders, and favorite memories can all surface here so the homepage feels alive instead of static.",
+      "author": "Dad",
+      "createdAt": "2026-03-10T18:20:00.000Z"
+    }
+  ],
+  "blogPosts": [
+    {
+      "id": "blog-1",
+      "title": "Kitchen Corner",
+      "category": "Recipes",
+      "excerpt": "A warm space for dinner notes, simple wins, and the kind of updates you want waiting after school or work.",
+      "body": "This blog rail is where Paige and Dad can share recipes, family updates, encouragement, and milestone notes without it feeling like a generic CMS.",
+      "author": "Paige",
+      "createdAt": "2026-03-11T18:00:00.000Z"
+    },
+    {
+      "id": "blog-2",
+      "title": "Garden Notes",
+      "category": "Family Update",
+      "excerpt": "The sunflower world is meant to feel like a living scrapbook cover, not just a backdrop.",
+      "body": "Every public page shifts the mood of the same family garden. Morning light welcomes visitors in, while evening and night modes make the later pages feel softer and more reflective.",
+      "author": "Dad",
+      "createdAt": "2026-03-09T17:15:00.000Z"
+    }
+  ],
+  "galleryItems": [
+    {
+      "id": "gallery-1",
+      "title": "Sunflower Walk",
+      "caption": "A bright memory card for family adventures, art, and snapshots that deserve to be revisited.",
+      "imageUrl": "https://images.unsplash.com/photo-1506744038136-46273834b3fb?auto=format&fit=crop&w=1200&q=80",
+      "uploadedBy": "Paige",
+      "createdAt": "2026-03-11T19:30:00.000Z",
+      "likes": 14,
+      "commentCount": 5
+    },
+    {
+      "id": "gallery-2",
+      "title": "Golden Hour Scrapbook",
+      "caption": "The public gallery now has a real content rail ready for future R2-backed uploads and comments.",
+      "imageUrl": "https://images.unsplash.com/photo-1470509037663-253afd7f0f51?auto=format&fit=crop&w=1200&q=80",
+      "uploadedBy": "Dad",
+      "createdAt": "2026-03-10T20:15:00.000Z",
+      "likes": 9,
+      "commentCount": 2
+    },
+    {
+      "id": "gallery-3",
+      "title": "Creative Corner",
+      "caption": "A place for art, pride, and the little pieces of family life that make the portal feel personal.",
+      "imageUrl": "https://images.unsplash.com/photo-1518998053901-5348d3961a04?auto=format&fit=crop&w=1200&q=80",
+      "uploadedBy": "Jerica",
+      "createdAt": "2026-03-08T16:10:00.000Z",
+      "likes": 17,
+      "commentCount": 6
+    }
+  ],
+  "messageBoardPosts": [
+    {
+      "id": "board-1",
+      "name": "Neighborhood Friend",
+      "message": "Sending sunshine and love to the Swain family today.",
+      "approved": true,
+      "createdAt": "2026-03-11T13:40:00.000Z"
+    },
+    {
+      "id": "board-2",
+      "name": "Church Family",
+      "message": "Praying for a peaceful, joy-filled week for everyone at Paige's Corner.",
+      "approved": true,
+      "createdAt": "2026-03-10T14:25:00.000Z"
+    },
+    {
+      "id": "board-3",
+      "name": "Guest Preview",
+      "message": "This post is waiting in the moderation queue until Paige or Dad approves it.",
+      "approved": false,
+      "createdAt": "2026-03-12T16:05:00.000Z"
+    }
+  ]
+}

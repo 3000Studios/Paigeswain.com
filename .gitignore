@@ -4,8 +4,11 @@ public/dist/
 .env
 .env.local
 .env.*
+.dev.vars
+.dev.vars.*
 worker/node_modules/
 worker/dist/
 server/uploads/
 *.log
+.wrangler/
 .DS_Store

@@ -1,0 +1,20 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 64 64" role="img" aria-label="Paige's Corner sunflower icon">
+  <defs>
+    <linearGradient id="petal" x1="0%" x2="100%" y1="0%" y2="100%">
+      <stop offset="0%" stop-color="#ffe37a" />
+      <stop offset="100%" stop-color="#ffb43f" />
+    </linearGradient>
+  </defs>
+  <rect width="64" height="64" rx="16" fill="#102038" />
+  <g transform="translate(32 29)">
+    <g fill="url(#petal)">
+      <ellipse rx="5" ry="13" transform="rotate(0)" />
+      <ellipse rx="5" ry="13" transform="rotate(45)" />
+      <ellipse rx="5" ry="13" transform="rotate(90)" />
+      <ellipse rx="5" ry="13" transform="rotate(135)" />
+    </g>
+    <circle r="9" fill="#653913" />
+    <circle r="4" fill="#fff2b0" />
+  </g>
+  <path d="M31 40c-6 3-10 8-10 14h6c1-3 3-6 5-8 2 2 4 5 5 8h6c0-6-4-11-10-14h-2z" fill="#447849" />
+</svg>
