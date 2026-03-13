@@ -1,0 +1,59 @@
+{
+  "announcements": [
+    {
+      "id": "announcement-1",
+      "title": "Family check-in tonight",
+      "body": "Let's meet in the dashboard after dinner to plan the weekend and pick movie night snacks.",
+      "author": "Paige",
+      "createdAt": "2026-03-13T01:10:00.000Z",
+      "pinned": true
+    },
+    {
+      "id": "announcement-2",
+      "title": "Gallery cleanup reminder",
+      "body": "If you add a new memory card today, give it a warm caption so it feels like part of the scrapbook.",
+      "author": "Dad",
+      "createdAt": "2026-03-12T18:40:00.000Z",
+      "pinned": false
+    }
+  ],
+  "messages": [
+    {
+      "id": "message-1",
+      "author": "Paige",
+      "audience": "Everyone",
+      "body": "Don't forget to check the dinner vote before 4:30.",
+      "createdAt": "2026-03-13T00:55:00.000Z"
+    },
+    {
+      "id": "message-2",
+      "author": "Jerica",
+      "audience": "Everyone",
+      "body": "I added a movie night idea to the request board.",
+      "createdAt": "2026-03-12T22:20:00.000Z"
+    },
+    {
+      "id": "message-3",
+      "author": "Dad",
+      "audience": "Kids",
+      "body": "Thanks for helping with the kitchen tonight. Gold stars are coming.",
+      "createdAt": "2026-03-12T21:15:00.000Z"
+    }
+  ],
+  "compliments": [
+    {
+      "id": "compliment-1",
+      "author": "Paige",
+      "target": "Jadon",
+      "body": "You kept showing up even when the day felt busy. Proud of you.",
+      "createdAt": "2026-03-12T20:00:00.000Z"
+    },
+    {
+      "id": "compliment-2",
+      "author": "Dad",
+      "target": "Jerica",
+      "body": "Your creativity makes this family brighter every single day.",
+      "createdAt": "2026-03-12T19:35:00.000Z"
+    }
+  ]
+}

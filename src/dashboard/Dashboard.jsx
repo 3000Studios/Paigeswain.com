@@ -5,6 +5,7 @@ import SunflowerScene from "../components/SunflowerScene"
 import { useAuth } from "../context/AuthContext"
 import { fetchJson } from "../utils/api"
 import FamilyActivityHub from "./FamilyActivityHub"
+import FamilyCommunicationHub from "./FamilyCommunicationHub"
 import FamilyContentStudio from "./FamilyContentStudio"
 import WelcomeReminderModal from "./WelcomeReminderModal"
 
@@ -14,6 +15,7 @@ export default function Dashboard() {
   const [dashboardData, setDashboardData] = useState(null)
   const [contentOverview, setContentOverview] = useState(null)
   const [activityOverview, setActivityOverview] = useState(null)
+  const [communicationOverview, setCommunicationOverview] = useState(null)
   const [error, setError] = useState("")
   const [loading, setLoading] = useState(true)
   const [showReminder, setShowReminder] = useState(false)
@@ -23,10 +25,16 @@ export default function Dashboard() {
 
     const loadDashboard = async () => {
       try {
-        const [homeData, nextContentOverview, nextActivityOverview] = await Promise.all([
+        const [
+          homeData,
+          nextContentOverview,
+          nextActivityOverview,
+          nextCommunicationOverview,
+        ] = await Promise.all([
           fetchJson("/api/dashboard/home"),
           fetchJson("/api/family/content/overview"),
           fetchJson("/api/family/activity/overview"),
+          fetchJson("/api/family/communication/overview"),
         ])
 
         if (!active) return
@@ -34,6 +42,7 @@ export default function Dashboard() {
         setDashboardData(homeData)
         setContentOverview(nextContentOverview)
         setActivityOverview(nextActivityOverview)
+        setCommunicationOverview(nextCommunicationOverview)
         setError("")
         setShowReminder(true)
       } catch (caughtError) {
@@ -64,6 +73,11 @@ export default function Dashboard() {
     setActivityOverview(nextOverview)
   }
 
+  const refreshCommunicationOverview = async () => {
+    const nextOverview = await fetchJson("/api/family/communication/overview")
+    setCommunicationOverview(nextOverview)
+  }
+
   const handleLogout = async () => {
     await logout()
     navigate("/")
@@ -81,7 +95,7 @@ export default function Dashboard() {
     )
   }
 
-  if (error || !dashboardData || !contentOverview || !activityOverview) {
+  if (error || !dashboardData || !contentOverview || !activityOverview || !communicationOverview) {
     return (
       <div className="route-gate">
         <div className="route-gate-card">
@@ -159,6 +173,11 @@ export default function Dashboard() {
         <FamilyActivityHub
           overview={activityOverview}
           onRefresh={refreshActivityOverview}
+          user={user}
+        />
+        <FamilyCommunicationHub
+          overview={communicationOverview}
+          onRefresh={refreshCommunicationOverview}
           user={user}
         />
         <FamilyContentStudio

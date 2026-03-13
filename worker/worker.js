@@ -1,5 +1,6 @@
 import { createFamilyContentStore } from "./familyContent.js"
 import { createFamilyActivityStore } from "./familyActivity.js"
+import { createFamilyCommunicationStore } from "./familyCommunication.js"
 
 const SESSION_COOKIE_NAME = "paiges_corner_session"
 const SESSION_TTL_SECONDS = 60 * 60 * 24 * 7
@@ -12,6 +13,7 @@ const decoder = new TextDecoder()
 const loginAttempts = new Map()
 const contentStore = createFamilyContentStore()
 const activityStore = createFamilyActivityStore()
+const communicationStore = createFamilyCommunicationStore()
 
 const accounts = {
   "paigeswain3000@gmail.com": {
@@ -669,6 +671,85 @@ async function handleRequestResolve(request, env) {
   return jsonResponse(requestEntry)
 }
 
+async function handleCommunicationOverview(request, env) {
+  const result = await requireUser(request, env)
+  if (result.errorResponse) return result.errorResponse
+
+  return jsonResponse(communicationStore.getOverview(result.user))
+}
+
+async function handleFamilyMessageCreate(request, env) {
+  const result = await requireUser(request, env)
+  if (result.errorResponse) return result.errorResponse
+
+  const body = await request.json().catch(() => null)
+  const audience = normalizeText(body?.audience) || "Everyone"
+  const message = normalizeText(body?.body)
+
+  if (!message) {
+    return jsonResponse({ error: "Message text is required." }, { status: 400 })
+  }
+
+  return jsonResponse(
+    communicationStore.addMessage({
+      audience,
+      author: result.user.name,
+      body: message,
+    }),
+    { status: 201 },
+  )
+}
+
+async function handleAnnouncementCreate(request, env) {
+  const result = await requireAdmin(request, env)
+  if (result.errorResponse) return result.errorResponse
+
+  const body = await request.json().catch(() => null)
+  const title = normalizeText(body?.title)
+  const message = normalizeText(body?.body)
+
+  if (!title || !message) {
+    return jsonResponse(
+      { error: "Announcement title and body are required." },
+      { status: 400 },
+    )
+  }
+
+  return jsonResponse(
+    communicationStore.addAnnouncement({
+      author: result.user.name,
+      body: message,
+      title,
+    }),
+    { status: 201 },
+  )
+}
+
+async function handleComplimentCreate(request, env) {
+  const result = await requireUser(request, env)
+  if (result.errorResponse) return result.errorResponse
+
+  const body = await request.json().catch(() => null)
+  const target = normalizeText(body?.target)
+  const message = normalizeText(body?.body)
+
+  if (!target || !message) {
+    return jsonResponse(
+      { error: "Compliment target and message are required." },
+      { status: 400 },
+    )
+  }
+
+  return jsonResponse(
+    communicationStore.addCompliment({
+      author: result.user.name,
+      body: message,
+      target,
+    }),
+    { status: 201 },
+  )
+}
+
 export default {
   async fetch(request, env) {
     const { pathname } = new URL(request.url)
@@ -726,6 +807,10 @@ export default {
 
     if (pathname === "/api/family/activity/overview" && request.method === "GET") {
       return handleActivityOverview(request, env)
+    }
+
+    if (pathname === "/api/family/communication/overview" && request.method === "GET") {
+      return handleCommunicationOverview(request, env)
     }
 
     if (pathname === "/api/family/content/highlights" && request.method === "POST") {
@@ -794,6 +879,18 @@ export default {
       request.method === "POST"
     ) {
       return handleRequestResolve(request, env)
+    }
+
+    if (pathname === "/api/family/communication/messages" && request.method === "POST") {
+      return handleFamilyMessageCreate(request, env)
+    }
+
+    if (pathname === "/api/family/communication/announcements" && request.method === "POST") {
+      return handleAnnouncementCreate(request, env)
+    }
+
+    if (pathname === "/api/family/communication/compliments" && request.method === "POST") {
+      return handleComplimentCreate(request, env)
     }
 
     if (pathname.startsWith("/api/")) {

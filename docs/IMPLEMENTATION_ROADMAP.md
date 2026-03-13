@@ -7,6 +7,7 @@
 - Auth-backed dashboard shell is live with session protection.
 - Public content rails are API-backed and connected to dashboard publishing/moderation.
 - Household productivity rails are live in the dashboard for chores, dinner voting, groceries, requests, rewards, and activity feed.
+- Private family communication rails are live for family messages, announcements, compliments, and digest cards.
 
 ## Immediate priorities
 

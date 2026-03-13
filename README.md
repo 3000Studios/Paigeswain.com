@@ -31,6 +31,7 @@ This repo holds the monolithic version of the Paige’s Corner experience: a Vit
 - Guest message board posts flow into an admin moderation queue before appearing publicly.
 - Family memory cards are currently staged through the dashboard using image URLs as a temporary bridge until the full upload pipeline lands.
 - The private dashboard now includes live family productivity boards for chores, dinner voting, groceries, requests, schedule snapshots, rewards, and activity feed updates.
+- The private dashboard now also includes a family communication hub for private messages, parent announcements, compliments, and a daily digest rail.
 
 ## Planning docs
 - `docs/CHATGPT_BUILD_PLAYBOOK.md` — repo-native product and engineering rules for AI-assisted development.

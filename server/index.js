@@ -24,6 +24,12 @@ const {
   toggleGroceryItem,
   voteDinnerIdea,
 } = require("./familyActivity")
+const {
+  addAnnouncement,
+  addCompliment,
+  addMessage,
+  getOverview: getCommunicationOverview,
+} = require("./familyCommunication")
 const { dashboard, isAdmin, login, logout, readSession, session } = require("./familyAuth")
 
 const app = express()
@@ -107,6 +113,10 @@ app.get("/api/family/content/overview", requireUser, (req, res) => {
 
 app.get("/api/family/activity/overview", requireUser, (req, res) => {
   res.json(getOverview(req.user))
+})
+
+app.get("/api/family/communication/overview", requireUser, (req, res) => {
+  res.json(getCommunicationOverview(req.user))
 })
 
 app.post("/api/family/content/highlights", requireAdmin, (req, res) => {
@@ -310,6 +320,60 @@ app.post("/api/family/activity/requests/:id/resolve", requireAdmin, (req, res) =
   }
 
   res.json(requestEntry)
+})
+
+app.post("/api/family/communication/messages", requireUser, (req, res) => {
+  const audience = typeof req.body?.audience === "string" ? req.body.audience.trim() : "Everyone"
+  const body = typeof req.body?.body === "string" ? req.body.body.trim() : ""
+
+  if (!body) {
+    res.status(400).json({ error: "Message text is required." })
+    return
+  }
+
+  res.status(201).json(
+    addMessage({
+      audience,
+      author: req.user.name,
+      body,
+    }),
+  )
+})
+
+app.post("/api/family/communication/announcements", requireAdmin, (req, res) => {
+  const title = typeof req.body?.title === "string" ? req.body.title.trim() : ""
+  const body = typeof req.body?.body === "string" ? req.body.body.trim() : ""
+
+  if (!title || !body) {
+    res.status(400).json({ error: "Announcement title and body are required." })
+    return
+  }
+
+  res.status(201).json(
+    addAnnouncement({
+      author: req.user.name,
+      body,
+      title,
+    }),
+  )
+})
+
+app.post("/api/family/communication/compliments", requireUser, (req, res) => {
+  const target = typeof req.body?.target === "string" ? req.body.target.trim() : ""
+  const body = typeof req.body?.body === "string" ? req.body.body.trim() : ""
+
+  if (!target || !body) {
+    res.status(400).json({ error: "Compliment target and message are required." })
+    return
+  }
+
+  res.status(201).json(
+    addCompliment({
+      author: req.user.name,
+      body,
+      target,
+    }),
+  )
 })
 
 app.get("/api/status", (req, res) => {
