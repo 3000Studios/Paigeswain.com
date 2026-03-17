@@ -906,3 +906,28 @@ button {
     flex-direction: column;
   }
 }
+
+/* Custom Yellow Text Rendering */
+.nav-brand-mark, .nav-login, .button-primary,
+.nav-brand strong, .hero-title, .page-header h1, .footer-copy h2, .dashboard-hero h1,
+.highlight-panel h2, .feature-panel h2, .book-card h3, .dashboard-card h2,
+.nav-link.is-active, .metric-pill strong, .metric-card strong, .gallery-card-copy h2,
+.board-form-card h2, .blog-post-card h2, .dashboard-welcome-modal h2, .route-gate-card h1 {
+  text-shadow: 2px 2px 4px #000000, -1px -1px 0 #ffffff, 1px -1px 0 #ffffff, -1px 1px 0 #ffffff, 1px 1px 0 #ffffff !important;
+  color: #ffbe3b !important;
+  font-weight: 900 !important;
+}
+
+/* Emphasized 3D Edge Designs for Panels */
+.hero-shell, .page-header, .feature-panel, .dashboard-card, .dashboard-hero, .book-card, .login-modal,
+.metric-pill, .metric-card, .gallery-card, .compact-item, .footer-shell, .dashboard-digest-card, .dashboard-welcome-modal, .route-gate-card {
+  box-shadow: 0 0 15px 5px rgba(255, 190, 59, 0.4), inset 0 0 10px rgba(255, 255, 255, 0.5) !important;
+  border-radius: 40px 10px 30px 20px !important;
+  border: 2px solid rgba(255, 255, 255, 0.3) !important;
+}
+
+/* High Resolution 3D cursor */
+* {
+  cursor: url('/3d_bee_cursor.png') 0 0, auto !important;
+}
+

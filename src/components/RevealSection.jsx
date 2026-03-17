@@ -1,38 +1,17 @@
 import { useEffect, useRef, useState } from "react"
+import { motion } from "framer-motion"
 
 export default function RevealSection({ children, className = "" }) {
-  const ref = useRef(null)
-  const [visible, setVisible] = useState(false)
-
-  useEffect(() => {
-    const node = ref.current
-
-    if (!node) return undefined
-
-    const observer = new IntersectionObserver(
-      ([entry]) => {
-        if (entry.isIntersecting) {
-          setVisible(true)
-          return
-        }
-
-        setVisible(false)
-      },
-      { threshold: 0.18 },
-    )
-
-    observer.observe(node)
-
-    return () => observer.disconnect()
-  }, [])
-
   return (
-    <section
-      ref={ref}
+    <motion.section
       className={`reveal-section ${className}`.trim()}
-      data-visible={visible}
+      initial={{ opacity: 0, x: -100 }}
+      whileInView={{ opacity: 1, x: 0 }}
+      exit={{ opacity: 0, x: -100 }}
+      viewport={{ once: false, amount: 0.18 }}
+      transition={{ duration: 0.8, type: "spring", bounce: 0.4 }}
     >
       {children}
-    </section>
+    </motion.section>
   )
 }
