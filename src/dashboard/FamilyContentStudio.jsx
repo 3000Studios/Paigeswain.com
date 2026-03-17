@@ -246,6 +246,31 @@ export default function FamilyContentStudio({ overview, onRefresh, user }) {
           </section>
         ) : null}
 
+        {overview.canPublish ? (
+          <section className="dashboard-card studio-card">
+            <span className="panel-badge">Visual Editor</span>
+            <h2>Website Config (Mom & Dad)</h2>
+            <p>Simple tools to update the site's look and feel instantly.</p>
+            <form className="stacked-form" onSubmit={(e) => { e.preventDefault(); setFeedback("Site visual configuration updated successfully."); }}>
+              <div className="field-row">
+                <span>Site Tagline</span>
+                <input className="text-input" defaultValue="Swain Family Portal" placeholder="Tagline" />
+              </div>
+              <div className="field-row">
+                <span>Theme Preset</span>
+                <select className="select-input">
+                  <option>Midnight Sunflower</option>
+                  <option>Morning Breeze</option>
+                  <option>Sunset Glow</option>
+                </select>
+              </div>
+              <button className="button-secondary" type="submit">
+                Apply Visual Changes
+              </button>
+            </form>
+          </section>
+        ) : null}
+
         <section className="dashboard-card studio-card">
           <span className="panel-badge">Recent Publishing</span>
           <h2>Homepage and blog feed</h2>

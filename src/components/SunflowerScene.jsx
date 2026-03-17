@@ -261,17 +261,36 @@ export default function SunflowerScene({ lighting = "morning" }) {
   const mode = lightingModes[lighting] ?? lightingModes.morning
 
   return (
-    <Canvas camera={{ position: [0, 0.6, 9.5], fov: 42 }}>
+    <Canvas 
+      camera={{ position: [0, 0.6, 9.5], fov: 42 }}
+      shadows={{ type: THREE.PCFSoftShadowMap }}
+      dpr={[1, 2]}
+      gl={{ antialias: true, toneMapping: THREE.ACESFilmicToneMapping, toneMappingExposure: 1.1 }}
+    >
       <color args={[mode.sky]} attach="background" />
       <fog args={[mode.fog, 7, 28]} attach="fog" />
       <ambientLight intensity={mode.ambient} />
-      <directionalLight color={mode.directional} intensity={1.2} position={[6, 8, 8]} />
-      <directionalLight color={mode.accent} intensity={0.35} position={[-5, 3, 4]} />
+      
+      <directionalLight 
+        color={mode.directional} 
+        intensity={1.5} 
+        position={[6, 8, 8]} 
+        castShadow 
+        shadow-mapSize-width={2048}
+        shadow-mapSize-height={2048}
+        shadow-camera-near={0.5}
+        shadow-camera-far={50}
+        shadow-camera-left={-10}
+        shadow-camera-right={10}
+        shadow-camera-top={10}
+        shadow-camera-bottom={-10}
+      />
+      <directionalLight color={mode.accent} intensity={0.4} position={[-5, 3, 4]} />
 
       <GardenField lighting={mode} />
 
       <Stars
-        count={mode.stars ? 1800 : 900}
+        count={mode.stars ? 2200 : 900}
         depth={48}
         factor={mode.stars ? 4.5 : 1.6}
         fade
