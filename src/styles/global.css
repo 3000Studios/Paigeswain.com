@@ -931,3 +931,61 @@ button {
   cursor: url('/3d_bee_cursor.png') 0 0, auto !important;
 }
 
+/* --- Varied Text Animations for Headers --- */
+
+@keyframes floatTextAnim {
+  0% { transform: translateY(0); }
+  50% { transform: translateY(-3px); }
+  100% { transform: translateY(0); }
+}
+
+@keyframes pulseTextAnim {
+  0% { transform: scale(1); }
+  50% { transform: scale(1.02); }
+  100% { transform: scale(1); }
+}
+
+@keyframes skewTextAnim {
+  0% { transform: skewX(0deg); }
+  50% { transform: skewX(2deg); }
+  100% { transform: skewX(0deg); }
+}
+
+@keyframes wiggleTextAnim {
+  0% { transform: rotate(0deg); }
+  25% { transform: rotate(1deg); }
+  50% { transform: rotate(-1deg); }
+  75% { transform: rotate(1deg); }
+  100% { transform: rotate(0deg); }
+}
+
+@keyframes breathTextAnim {
+  0% { transform: scale(1) translateY(0); }
+  50% { transform: scale(1.01) translateY(-2px); }
+  100% { transform: scale(1) translateY(0); }
+}
+
+.hero-title, .dashboard-hero h1 {
+  animation: floatTextAnim 4s ease-in-out infinite alternate;
+}
+
+.page-header h1, .dashboard-welcome-modal h2 {
+  animation: pulseTextAnim 5s linear infinite alternate;
+}
+
+.highlight-panel h2, .gallery-card-copy h2 {
+  animation: skewTextAnim 3s ease-in-out infinite alternate;
+}
+
+.feature-panel h2, .board-form-card h2 {
+  animation: breathTextAnim 6s ease-in-out infinite alternate;
+}
+
+.book-card h3, .dashboard-card h2, .footer-copy h2, .nav-brand strong {
+  animation: wiggleTextAnim 7s linear infinite alternate;
+}
+
+.nav-brand-mark {
+  animation: floatTextAnim 5s infinite;
+}
+
