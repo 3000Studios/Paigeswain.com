@@ -54,13 +54,16 @@ export default function Home() {
               </div>
             </div>
 
-            <article className="feature-panel highlight-panel">
-              <span className="panel-badge">Front Door Experience</span>
-              <h2>Hero video, animated sunflower world, and a warm way into the family hub.</h2>
-              <p>
-                The public site is the scrapbook cover: bright, welcoming, and layered
-                with motion, depth, and personality.
-              </p>
+            <article className="feature-panel highlight-panel" style={{ padding: 0, overflow: 'hidden', position: 'relative', minHeight: '300px' }}>
+              <video 
+                src="https://assets.mixkit.co/videos/preview/mixkit-little-girl-playing-with-a-dog-in-the-park-343-large.mp4"
+                autoPlay loop muted playsInline
+                style={{ position: 'absolute', top: 0, left: 0, width: '100%', height: '100%', objectFit: 'cover' }}
+              />
+              <div style={{ position: 'absolute', bottom: 20, left: 20, right: 20, background: 'rgba(0,0,0,0.5)', padding: '15px', borderRadius: '15px', backdropFilter: 'blur(5px)' }}>
+                <span className="panel-badge" style={{ color: '#ffbe3b' }}>Front Door Experience</span>
+                <h2 style={{ fontSize: '1.2rem', margin: '5px 0 0', color: 'white' }}>Warm moments from the family hub.</h2>
+              </div>
             </article>
           </div>
         </RevealSection>
@@ -75,13 +78,16 @@ export default function Home() {
             </p>
           </RevealSection>
 
-          <RevealSection className="feature-panel">
-            <p className="eyebrow">Design direction</p>
-            <h2>Morning light, translucent flowers, and a wallpaper that moves with you.</h2>
-            <p>
-              The sunflower environment is shared across the public site, with each page
-              shifting the time of day and the mood of the garden.
-            </p>
+          <RevealSection className="feature-panel" style={{ padding: 0, overflow: 'hidden', position: 'relative', minHeight: '250px' }}>
+            <video 
+              src="https://assets.mixkit.co/videos/preview/mixkit-happy-family-playing-with-their-dog-in-a-cornfield-4322-large.mp4"
+              autoPlay loop muted playsInline
+              style={{ position: 'absolute', top: 0, left: 0, width: '100%', height: '100%', objectFit: 'cover' }}
+            />
+             <div style={{ position: 'absolute', bottom: 20, left: 20, right: 20, background: 'rgba(0,0,0,0.5)', padding: '10px 15px', borderRadius: '15px', backdropFilter: 'blur(5px)' }}>
+                <p className="eyebrow" style={{ color: '#ffbe3b' }}>Living memories</p>
+                <h2 style={{ fontSize: '1.2rem', margin: '5px 0 0', color: 'white' }}>Capturing every moment together.</h2>
+             </div>
           </RevealSection>
         </div>
 

@@ -8,6 +8,7 @@ import Blog from "./pages/Blog"
 import MessageBoard from "./pages/MessageBoard"
 import ProtectedRoute from "./components/ProtectedRoute"
 import DaisyBot from "./components/DaisyBot"
+import BackgroundMusic from "./components/BackgroundMusic"
 
 import Dashboard from "./dashboard/Dashboard"
 
@@ -62,6 +63,7 @@ export default function App() {
           }
         />
       </Routes>
+      <BackgroundMusic />
       <DaisyBot />
     </BrowserRouter>
   )
