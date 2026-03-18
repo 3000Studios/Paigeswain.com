@@ -1,4 +1,4 @@
-import { useEffect } from "react"
+import { useEffect, useState } from "react"
 import { BrowserRouter, Routes, Route } from "react-router-dom"
 
 import Home from "./pages/Home"
@@ -9,11 +9,19 @@ import MessageBoard from "./pages/MessageBoard"
 import ProtectedRoute from "./components/ProtectedRoute"
 import DaisyBot from "./components/DaisyBot"
 import BackgroundMusic from "./components/BackgroundMusic"
+import WebsiteOpener from "./components/WebsiteOpener"
 
 import Dashboard from "./dashboard/Dashboard"
 
 export default function App() {
+  const [showOpener, setShowOpener] = useState(false);
+
   useEffect(() => {
+    // Check if the user has already seen the opener this session
+    if (!sessionStorage.getItem('hasSeenOpener')) {
+      setShowOpener(true);
+    }
+
     const playBeeSound = () => {
       try {
         const AudioContext = window.AudioContext || window.webkitAudioContext;
@@ -46,25 +54,33 @@ export default function App() {
     return () => document.removeEventListener('click', playBeeSound);
   }, []);
 
+  const handleOpenerComplete = () => {
+    sessionStorage.setItem('hasSeenOpener', 'true');
+    setShowOpener(false);
+  };
+
   return (
     <BrowserRouter>
-      <Routes>
-        <Route path="/" element={<Home />} />
-        <Route path="/about" element={<About />} />
-        <Route path="/gallery" element={<Gallery />} />
-        <Route path="/blog" element={<Blog />} />
-        <Route path="/message-board" element={<MessageBoard />} />
-        <Route
-          path="/family-dashboard"
-          element={
-            <ProtectedRoute>
-              <Dashboard />
-            </ProtectedRoute>
-          }
-        />
-      </Routes>
-      <BackgroundMusic />
-      <DaisyBot />
+      {showOpener && <WebsiteOpener onComplete={handleOpenerComplete} />}
+      <div style={{ display: showOpener ? "none" : "block" }}>
+        <Routes>
+          <Route path="/" element={<Home />} />
+          <Route path="/about" element={<About />} />
+          <Route path="/gallery" element={<Gallery />} />
+          <Route path="/blog" element={<Blog />} />
+          <Route path="/message-board" element={<MessageBoard />} />
+          <Route
+            path="/family-dashboard"
+            element={
+              <ProtectedRoute>
+                <Dashboard />
+              </ProtectedRoute>
+            }
+          />
+        </Routes>
+        <BackgroundMusic />
+        <DaisyBot />
+      </div>
     </BrowserRouter>
   )
 }
