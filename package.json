@@ -6,7 +6,7 @@
     "dev": "vite",
     "build": "vite build",
     "start": "node server/index.js",
-    "deploy": "wrangler deploy"
+    "deploy": "npm run build && wrangler deploy"
   },
   "dependencies": {
     "@react-three/drei": "^10.0.0",
