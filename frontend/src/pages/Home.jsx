@@ -62,7 +62,6 @@ export default function Home() {
           </div>
         </section>
 
-        {/* Rest of the content */}
         <section className="space-y-6">
           <div className="flex items-center justify-between">
             <h2 className="text-3xl font-semibold text-forest">Auto-populated blog</h2>
@@ -112,4 +111,3 @@ export default function Home() {
     </div>
   );
 }
-
