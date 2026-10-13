@@ -14,8 +14,9 @@ export default function BlogCard({ post }) {
       </div>
       <h3 className="mt-3 text-2xl font-semibold text-forest">{post.title}</h3>
       <p className="mt-2 text-sm text-slate-700 leading-relaxed max-w-prose">
-        {post.content?.slice(0, 220) ?? "Paige is writing fresh thoughts..."}
+        {post.excerpt || post.content?.slice(0, 220) || "Paige is writing fresh thoughts..."}
       </p>
+      {post.author && <p className="mt-3 text-xs font-semibold uppercase tracking-[0.3em] text-forest/60">By {post.author}</p>}
     </article>
   );
 }

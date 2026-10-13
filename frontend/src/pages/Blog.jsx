@@ -1,9 +1,16 @@
 import { useEffect, useState } from "react";
 import BlogCard from "../components/BlogCard";
+import Footer from "../components/Footer";
 import Nav from "../components/Nav";
+import { usePageMeta } from "../hooks/usePageMeta";
 import { getBlog, sendMessage } from "../lib/api";
 
 export default function Blog() {
+  usePageMeta({
+    title: "Weekly Sunshine Journal — Family Blog",
+    description:
+      "The Weekly Sunshine Journal: family stories, encouragement, and fresh posts from Paige's Corner, updated every week.",
+  });
   const [posts, setPosts] = useState([]);
 
   useEffect(() => {
@@ -43,6 +50,7 @@ export default function Blog() {
           )}
         </div>
       </main>
+      <Footer />
     </div>
   );
 }

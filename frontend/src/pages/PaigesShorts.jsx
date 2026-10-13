@@ -1,10 +1,17 @@
 import { useEffect, useState } from "react";
+import Footer from "../components/Footer";
 import JournalCard from "../components/JournalCard";
 import Nav from "../components/Nav";
 import { useAuth } from "../hooks/useAuth";
+import { usePageMeta } from "../hooks/usePageMeta";
 import { getJournal, publishJournal } from "../lib/api";
 
 export default function PaigesShorts() {
+  usePageMeta({
+    title: "Paige's Shorts — Journal & Reflections",
+    description:
+      "Paige's Shorts: warm journal entries, little love notes, and spontaneous poems from Paige Swain.",
+  });
   const { user } = useAuth();
   const [entries, setEntries] = useState([]);
   const [draft, setDraft] = useState("");
@@ -67,6 +74,7 @@ export default function PaigesShorts() {
           ))}
         </section>
       </main>
+      <Footer />
     </div>
   );
 }

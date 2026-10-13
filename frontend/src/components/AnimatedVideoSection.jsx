@@ -6,9 +6,11 @@ export default function AnimatedVideoSection() {
         loop
         muted
         playsInline
+        preload="metadata"
         className="absolute inset-0 h-full w-full object-cover"
+        aria-label="Sunflowers swaying in the sunshine at Paige's Corner"
       >
-        <source src="https://assets.mixkit.co/videos/preview/mixkit-sunlight-streaming-through-the-leaves-of-a-tree-4009-large.mp4" type="video/mp4" />
+        <source src="/SunFlower_opener.mp4" type="video/mp4" />
         Your browser does not support the video tag.
       </video>
       <div className="absolute inset-0 bg-gradient-to-t from-black/60 via-transparent to-transparent"></div>

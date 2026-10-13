@@ -4,6 +4,11 @@ import { useNavigate } from "react-router-dom";
 export default function Intro() {
   const navigate = useNavigate();
 
+  const enter = () => {
+    localStorage.setItem("hasSeenIntro", "true");
+    navigate("/home", { replace: true });
+  };
+
   useEffect(() => {
     const seen = localStorage.getItem("hasSeenIntro");
     if (seen) {
@@ -18,10 +23,22 @@ export default function Intro() {
   }, [navigate]);
 
   return (
-    <div className="h-screen w-screen bg-black flex items-center justify-center">
-      <video autoPlay muted className="absolute w-full h-full object-cover">
-        <source src="https://storage.coverr.co/videos/coverr-sunflower-field-1359/1080p.mp4" type="video/mp4" />
+    <div className="relative flex h-screen w-screen items-center justify-center bg-black">
+      <video autoPlay muted playsInline className="absolute h-full w-full object-cover" aria-hidden="true">
+        <source src="/SunFlower_opener.mp4" type="video/mp4" />
       </video>
+      <div className="absolute inset-0 bg-gradient-to-t from-black/50 via-transparent to-black/20" aria-hidden="true" />
+      <div className="relative z-10 flex flex-col items-center gap-4 px-6 text-center">
+        <p className="text-sm uppercase tracking-[0.5em] text-cream/90">Welcome to</p>
+        <p className="font-serif text-5xl font-semibold text-white drop-shadow-lg">Paige&apos;s Corner 🌻</p>
+        <button
+          type="button"
+          onClick={enter}
+          className="mt-2 rounded-full bg-sunflower px-6 py-3 text-xs font-bold uppercase tracking-[0.35em] text-forest shadow-xl transition hover:bg-sunflower-soft"
+        >
+          Enter Paige&apos;s Corner
+        </button>
+      </div>
     </div>
   );
 }

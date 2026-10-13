@@ -16,7 +16,7 @@ export default function Nav() {
   const { user, signOut } = useAuth();
 
   return (
-    <nav className="bg-cream/80 backdrop-blur sticky top-0 z-40 border-b border-sunflower-soft shadow-lg">
+    <nav aria-label="Primary" className="bg-cream/80 backdrop-blur sticky top-0 z-40 border-b border-sunflower-soft shadow-lg">
       <div className="max-w-6xl mx-auto flex items-center justify-between px-6 py-3 gap-4 flex-wrap">
         <Link to="/home" className="text-2xl font-bold tracking-wide text-forest">
           🌻 Paige Swain

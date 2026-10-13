@@ -1,7 +1,9 @@
-import { useEffect, useState } from "react";
+import { useEffect, useMemo, useState } from "react";
+import Footer from "../components/Footer";
 import Nav from "../components/Nav";
 import RecipeCard from "../components/RecipeCard";
 import { useAuth } from "../hooks/useAuth";
+import { usePageMeta } from "../hooks/usePageMeta";
 import { getRecipes, publishRecipe, uploadRecipeImage } from "../lib/api";
 
 const blankRecipe = {
@@ -11,15 +13,36 @@ const blankRecipe = {
 };
 
 export default function PaigesKitchen() {
+  usePageMeta({
+    title: "Paige's Kitchen — Recipes from Paige",
+    description:
+      "Fresh, family-loved recipes straight from Paige's Kitchen — with printable recipe cards and a servings scaler for every dish.",
+  });
   const { user } = useAuth();
   const [latest, setLatest] = useState(null);
+  const [allRecipes, setAllRecipes] = useState([]);
+  const [query, setQuery] = useState("");
   const [form, setForm] = useState(blankRecipe);
   const [image, setImage] = useState(null);
   const [status, setStatus] = useState("");
 
   useEffect(() => {
-    getRecipes(true).then((data) => setLatest(data?.[0] ?? null));
+    getRecipes(true).then((data) => setLatest(data?.[0] ?? null)).catch(() => {});
+    getRecipes().then((data) => setAllRecipes(Array.isArray(data) ? data : [])).catch(() => {});
   }, [status]);
+
+  const shelfRecipes = useMemo(() => {
+    const rest = allRecipes.filter((recipe) => recipe?.id !== latest?.id);
+    const term = query.trim().toLowerCase();
+    if (!term) return rest;
+    return rest.filter((recipe) =>
+      [recipe?.title, recipe?.ingredients, recipe?.instructions]
+        .filter(Boolean)
+        .join(" ")
+        .toLowerCase()
+        .includes(term),
+    );
+  }, [allRecipes, latest, query]);
 
   const handleSubmit = async (event) => {
     event.preventDefault();
@@ -105,7 +128,37 @@ export default function PaigesKitchen() {
             </section>
           )}
         </div>
+
+        {allRecipes.length > 1 && (
+          <section className="space-y-5">
+            <div className="flex flex-wrap items-end justify-between gap-4">
+              <h2 className="text-2xl font-semibold text-forest">The whole recipe shelf</h2>
+              <label className="flex w-full max-w-xs flex-col gap-1 text-xs font-semibold uppercase tracking-[0.25em] text-forest/70">
+                Search recipes
+                <input
+                  type="search"
+                  value={query}
+                  onChange={(event) => setQuery(event.target.value)}
+                  placeholder="Try “pancakes” or “lemon”…"
+                  className="w-full rounded-full border border-slate-300 bg-white/80 px-4 py-2 text-sm normal-case tracking-normal text-slate-800 focus:border-forest focus:outline-none"
+                />
+              </label>
+            </div>
+            {shelfRecipes.length ? (
+              <div className="grid gap-6 lg:grid-cols-2">
+                {shelfRecipes.map((recipe) => (
+                  <RecipeCard key={`shelf-${recipe.id}`} recipe={recipe} />
+                ))}
+              </div>
+            ) : (
+              <p className="rounded-2xl border border-dashed border-slate-400 bg-white/70 p-6 text-slate-600">
+                No recipes match “{query}” yet — try another craving.
+              </p>
+            )}
+          </section>
+        )}
       </main>
+      <Footer />
     </div>
   );
 }

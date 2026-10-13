@@ -1,9 +1,16 @@
 import { useEffect, useState } from "react";
 import BlogCard from "../components/BlogCard";
+import Footer from "../components/Footer";
 import Nav from "../components/Nav";
+import { usePageMeta } from "../hooks/usePageMeta";
 import { getBlog } from "../lib/api";
 
 export default function MentalHealth() {
+  usePageMeta({
+    title: "Mental Health — Family Breathing Library",
+    description:
+      "Gentle weekly mental-health exercises for the whole family — breathing, gratitude, and calm routines from Paige's Corner.",
+  });
   const [posts, setPosts] = useState([]);
 
   useEffect(() => {
@@ -29,6 +36,7 @@ export default function MentalHealth() {
           )}
         </div>
       </main>
+      <Footer />
     </div>
   );
 }

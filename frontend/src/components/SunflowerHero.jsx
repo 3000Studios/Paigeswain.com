@@ -1,4 +1,5 @@
 import { useEffect, useState } from "react";
+import { Link } from "react-router-dom";
 import BirdAnimation from "./BirdAnimation";
 
 const QUOTES = [
@@ -26,6 +27,20 @@ export default function SunflowerHero({ dadJoke }) {
         <p className="text-sm uppercase tracking-[0.3em] text-slate-700">Family sunshine ritual</p>
         <h1 className="text-5xl font-extrabold text-forest drop-shadow-lg">Paige Swain&apos;s Sunlit Home</h1>
         <p className="text-lg text-slate-800 leading-relaxed">{quote}</p>
+        <div className="flex flex-wrap gap-3">
+          <Link
+            to="/kitchen"
+            className="rounded-full bg-forest px-5 py-2.5 text-xs font-bold uppercase tracking-[0.3em] text-cream shadow-lg transition hover:bg-forest/90"
+          >
+            Visit Paige&apos;s Kitchen
+          </Link>
+          <Link
+            to="/blog"
+            className="rounded-full border border-forest/60 bg-white/70 px-5 py-2.5 text-xs font-bold uppercase tracking-[0.3em] text-forest transition hover:bg-white"
+          >
+            Read the journal
+          </Link>
+        </div>
         <div className="flex flex-wrap gap-4">
           <div className="rounded-2xl bg-white/80 p-4 text-sm text-slate-700 shadow-inner">
             <p className="text-xs uppercase tracking-[0.35em] text-sunflower-soft">Floating quote</p>

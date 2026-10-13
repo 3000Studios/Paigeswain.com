@@ -1,9 +1,16 @@
 import { useEffect, useState } from "react";
 import BlogCard from "../components/BlogCard";
+import Footer from "../components/Footer";
 import Nav from "../components/Nav";
+import { usePageMeta } from "../hooks/usePageMeta";
 import { getBlog } from "../lib/api";
 
 export default function HealthyFood() {
+  usePageMeta({
+    title: "Healthy Food — Kitchen Stories & Quick Meals",
+    description:
+      "Budget-friendly healthy dinners, smoothie boosts, and snack stations the kids can help build — healthy food ideas from Paige's Corner.",
+  });
   const [posts, setPosts] = useState([]);
 
   useEffect(() => {
@@ -31,6 +38,7 @@ export default function HealthyFood() {
           )}
         </div>
       </main>
+      <Footer />
     </div>
   );
 }

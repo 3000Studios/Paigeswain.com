@@ -5,10 +5,17 @@ import RecipeCard from "../components/RecipeCard";
 import SunflowerHero from "../components/SunflowerHero";
 import JournalCard from "../components/JournalCard";
 import AnimatedVideoSection from "../components/AnimatedVideoSection";
+import Footer from "../components/Footer";
 import HeartfeltMessages from "../components/HeartfeltMessages";
+import { usePageMeta } from "../hooks/usePageMeta";
 import { getBlog, getCompliment, getDadJoke, getJournal, getRecipes } from "../lib/api";
 
 export default function Home() {
+  usePageMeta({
+    title: "Paige's Corner • Paige Swain's Sunflower Sanctuary",
+    description:
+      "Welcome to Paige's Corner — Paige Swain's sunflower-themed family home: fresh recipes, a weekly sunshine journal, gentle wellness exercises, and healthy family food ideas.",
+  });
   const [mentalFeed, setMentalFeed] = useState([]);
   const [healthyFeed, setHealthyFeed] = useState([]);
   const [latestRecipe, setLatestRecipe] = useState(null);
@@ -64,7 +71,7 @@ export default function Home() {
 
         <section className="space-y-6">
           <div className="flex items-center justify-between">
-            <h2 className="text-3xl font-semibold text-forest">Auto-populated blog</h2>
+            <h2 className="text-3xl font-semibold text-forest">Fresh from the journal</h2>
             <span className="text-xs uppercase tracking-[0.4em] text-forest/50">Updated weekly</span>
           </div>
           <div className="grid gap-6 lg:grid-cols-2">
@@ -108,6 +115,7 @@ export default function Home() {
           </div>
         </section>
       </main>
+      <Footer />
     </div>
   );
 }

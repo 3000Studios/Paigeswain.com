@@ -51,3 +51,51 @@ body {
     url("data:image/svg+xml;utf8,<svg xmlns='http://www.w3.org/2000/svg' width='24' height='24' style='font-size: 20px'><text y='18'>❤️</text></svg>"),
     auto;
 }
+
+::selection {
+  background-color: rgba(255, 199, 44, 0.45);
+}
+
+:focus-visible {
+  outline: 3px solid rgba(255, 199, 44, 0.9);
+  outline-offset: 2px;
+  border-radius: 4px;
+}
+
+html {
+  scroll-behavior: smooth;
+}
+
+@media (prefers-reduced-motion: reduce) {
+  html {
+    scroll-behavior: auto;
+  }
+  .animate-bird {
+    animation: none;
+  }
+}
+
+/* Print: only the recipe card (printable recipe view) goes on paper. */
+@media print {
+  body {
+    background-color: #ffffff;
+  }
+  body * {
+    visibility: hidden;
+  }
+  .recipe-print,
+  .recipe-print * {
+    visibility: visible;
+  }
+  .recipe-print {
+    position: absolute;
+    inset: 0;
+    width: 100%;
+    border: none;
+    box-shadow: none;
+    backdrop-filter: none;
+  }
+  .no-print {
+    display: none !important;
+  }
+}
