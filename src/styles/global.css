@@ -1002,3 +1002,10 @@ a:focus-visible, button:focus-visible, input:focus-visible, textarea:focus-visib
   animation: floatTextAnim 5s infinite;
 }
 
+
+/* AdSenseGate: never show ad containers on app screens without publisher content */
+body.ads-off .google-auto-placed,
+body.ads-off ins.adsbygoogle,
+body.ads-off .adsbygoogle {
+  display: none !important;
+}

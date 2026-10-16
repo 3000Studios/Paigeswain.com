@@ -10,6 +10,7 @@ import ProtectedRoute from "./components/ProtectedRoute"
 import DaisyBot from "./components/DaisyBot"
 import BackgroundMusic from "./components/BackgroundMusic"
 import WebsiteOpener from "./components/WebsiteOpener"
+import AdSenseGate from "./components/AdSenseGate"
 
 import Dashboard from "./dashboard/Dashboard"
 
@@ -61,6 +62,7 @@ export default function App() {
 
   return (
     <BrowserRouter>
+      <AdSenseGate />
       {showOpener && <WebsiteOpener onComplete={handleOpenerComplete} />}
       <div style={{ display: showOpener ? "none" : "block" }}>
         <Routes>
