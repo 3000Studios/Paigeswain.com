@@ -16,6 +16,7 @@ import ReactionTest from "./pages/game/ReactionTest";
 import GameShell from "./pages/game/GameShell";
 import LoveEmojiParticles from "./components/LoveEmojiParticles";
 import FloatingMusicPlayer from "./components/FloatingMusicPlayer";
+import AdSenseGate from "./components/AdSenseGate";
 import "./index.css";
 
 createRoot(document.getElementById("root")).render(
@@ -24,6 +25,7 @@ createRoot(document.getElementById("root")).render(
       <LoveEmojiParticles />
       <FloatingMusicPlayer />
       <BrowserRouter>
+        <AdSenseGate />
         <Routes>
           <Route path="/" element={<Navigate to="/intro" replace />} />
           <Route path="/intro" element={<Intro />} />

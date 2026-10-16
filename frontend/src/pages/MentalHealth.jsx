@@ -4,6 +4,7 @@ import Footer from "../components/Footer";
 import Nav from "../components/Nav";
 import { usePageMeta } from "../hooks/usePageMeta";
 import { getBlog } from "../lib/api";
+import EditorialSection, { MENTAL_ARTICLES } from "../components/EditorialSection";
 
 export default function MentalHealth() {
   usePageMeta({
@@ -27,14 +28,11 @@ export default function MentalHealth() {
           <p className="text-sm text-slate-600">Weekly exercises that promote calm, gratitude, and closeness.</p>
         </header>
         <div className="space-y-6">
-          {posts.length ? (
-            posts.map((post) => <BlogCard key={`mental-${post.id}`} post={post} />)
-          ) : (
-            <div className="rounded-2xl border border-dashed border-slate-400 bg-white/70 p-6 text-slate-600">
-              Mental health routines are being generated every Sunday.
-            </div>
-          )}
+          {posts.map((post) => (
+            <BlogCard key={`mental-${post.id}`} post={post} />
+          ))}
         </div>
+        <EditorialSection articles={MENTAL_ARTICLES} heading="Start with these family practices" />
       </main>
       <Footer />
     </div>

@@ -114,6 +114,26 @@ export default function Home() {
             </div>
           </div>
         </section>
+        <section className="space-y-4 rounded-3xl border border-white/60 bg-white/80 p-6 shadow-lg">
+          <h2 className="text-3xl font-semibold text-forest">Welcome to the Sunflower Sanctuary</h2>
+          <p className="text-base leading-relaxed text-slate-700">
+            Paige's Corner is the Swain family's home on the web, from Acworth, Georgia — part
+            garden journal, part family kitchen, part front porch. The public pages are for
+            anyone who finds them useful: how we grow sunflowers in Georgia clay and long
+            summers, the weeknight recipes that actually survive a school night, gentle
+            breathing and gratitude practices for the whole family, and the small systems
+            that keep a busy household kind and running.
+          </p>
+          <p className="text-base leading-relaxed text-slate-700">
+            Start with the <a className="font-semibold text-forest underline" href="/blog">Weekly Sunshine Journal</a> for
+            garden notes and family stories, browse <a className="font-semibold text-forest underline" href="/kitchen">Paige's Kitchen</a> for
+            recipes you can scale and print, visit the <a className="font-semibold text-forest underline" href="/mental">Breathing Library</a> for
+            calm-down practices, or the <a className="font-semibold text-forest underline" href="/healthy">Healthy Food</a> pages for
+            snack stations and smoothie formulas. Behind the family login is the private
+            side — planning, messages, and memories just for us. The porch, though, is
+            public, and you are welcome on it.
+          </p>
+        </section>
       </main>
       <Footer />
     </div>

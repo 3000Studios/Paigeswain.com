@@ -99,3 +99,10 @@ html {
     display: none !important;
   }
 }
+
+/* AdSenseGate: never show ad containers on screens without publisher content */
+body.ads-off .google-auto-placed,
+body.ads-off ins.adsbygoogle,
+body.ads-off .adsbygoogle {
+  display: none !important;
+}

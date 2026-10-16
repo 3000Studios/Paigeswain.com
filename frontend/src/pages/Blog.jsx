@@ -4,6 +4,7 @@ import Footer from "../components/Footer";
 import Nav from "../components/Nav";
 import { usePageMeta } from "../hooks/usePageMeta";
 import { getBlog, sendMessage } from "../lib/api";
+import EditorialSection, { BLOG_ARTICLES } from "../components/EditorialSection";
 
 export default function Blog() {
   usePageMeta({
@@ -41,14 +42,11 @@ export default function Blog() {
           </button>
         </div>
         <div className="space-y-6">
-          {posts.length ? (
-            posts.map((post) => <BlogCard key={`blog-${post.id}`} post={post} />)
-          ) : (
-            <p className="rounded-2xl border border-dashed border-forest/40 bg-white/70 p-6 text-base text-slate-600">
-              Blog posts will appear once the cron adds fresh content.
-            </p>
-          )}
+          {posts.map((post) => (
+            <BlogCard key={`blog-${post.id}`} post={post} />
+          ))}
         </div>
+        <EditorialSection articles={BLOG_ARTICLES} heading="From the Sunshine Journal" />
       </main>
       <Footer />
     </div>
