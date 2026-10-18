@@ -2,6 +2,7 @@ import { useEffect, useState } from "react";
 import BlogCard from "../components/BlogCard";
 import Footer from "../components/Footer";
 import Nav from "../components/Nav";
+import SunflowerBackdrop from "../components/SunflowerBackdrop";
 import { usePageMeta } from "../hooks/usePageMeta";
 import { getBlog, sendMessage } from "../lib/api";
 import EditorialSection, { BLOG_ARTICLES } from "../components/EditorialSection";
@@ -23,7 +24,8 @@ export default function Blog() {
   };
 
   return (
-    <div className="min-h-screen bg-cream text-slate-900">
+    <div className="relative min-h-screen text-slate-900">
+      <SunflowerBackdrop />
       <Nav />
       <main className="mx-auto max-w-5xl space-y-8 px-6 py-10">
         <header className="space-y-2">

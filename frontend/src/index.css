@@ -73,6 +73,96 @@ html {
   .animate-bird {
     animation: none;
   }
+  .sunflower-trigger,
+  .petal-ring {
+    animation: none;
+  }
+}
+
+/* Animated sunflower menu trigger: gentle sway + slow petal-ring spin. */
+.sunflower-trigger {
+  display: block;
+  transform-origin: 50% 88%;
+  animation: sunflower-sway 5.5s ease-in-out infinite;
+}
+
+.petal-ring {
+  transform-box: fill-box;
+  transform-origin: center;
+  animation: sunflower-spin 26s linear infinite;
+}
+
+@keyframes sunflower-sway {
+  0%,
+  100% {
+    transform: rotate(-4.5deg);
+  }
+  50% {
+    transform: rotate(4.5deg);
+  }
+}
+
+@keyframes sunflower-spin {
+  to {
+    transform: rotate(360deg);
+  }
+}
+
+/* Pop-out menu drawer: slide + scrim + staggered items (CSS-only motion). */
+.menu-scrim {
+  transition: opacity 0.3s ease;
+}
+
+.menu-drawer {
+  transform: translateX(104%);
+  visibility: hidden;
+  transition:
+    transform 0.55s cubic-bezier(0.32, 0.72, 0.28, 1),
+    visibility 0s linear 0.55s;
+}
+
+.menu-drawer.open {
+  transform: translateX(0);
+  visibility: visible;
+  transition: transform 0.55s cubic-bezier(0.32, 0.72, 0.28, 1);
+}
+
+.menu-item {
+  opacity: 0;
+  transform: translateX(26px);
+  transition:
+    opacity 0.3s ease,
+    transform 0.3s ease;
+}
+
+.menu-drawer.open .menu-item {
+  opacity: 1;
+  transform: translateX(0);
+}
+
+@media (prefers-reduced-motion: reduce) {
+  .menu-scrim,
+  .menu-drawer,
+  .menu-item {
+    transition: none !important;
+  }
+  .menu-item {
+    opacity: 1;
+    transform: none;
+  }
+}
+
+/* Contrast insurance for text sitting on the drawer's sunflower wallpaper. */
+.drawer-shadow {
+  text-shadow:
+    0 2px 10px rgba(15, 8, 0, 0.9),
+    0 1px 3px rgba(15, 8, 0, 0.95);
+}
+
+.drawer-link {
+  text-shadow:
+    0 2px 12px rgba(15, 8, 0, 0.95),
+    0 1px 4px rgba(15, 8, 0, 1);
 }
 
 /* Print: only the recipe card (printable recipe view) goes on paper. */
@@ -105,4 +195,12 @@ body.ads-off .google-auto-placed,
 body.ads-off ins.adsbygoogle,
 body.ads-off .adsbygoogle {
   display: none !important;
+}
+
+/* Reduced-motion guard (kept last so it wins the cascade). */
+@media (prefers-reduced-motion: reduce) {
+  .sunflower-trigger,
+  .petal-ring {
+    animation: none !important;
+  }
 }

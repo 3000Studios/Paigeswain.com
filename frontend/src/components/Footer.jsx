@@ -24,7 +24,7 @@ export default function Footer() {
             </Link>
           ))}
         </nav>
-        <nav aria-label="Legal" className="flex flex-wrap justify-center gap-x-5 gap-y-2 text-xs text-slate-500">
+        <nav aria-label="Legal" className="flex flex-wrap justify-center gap-x-5 gap-y-2 text-xs text-slate-700">
           <a href="/privacy.html" className="transition hover:text-forest">
             Privacy Policy
           </a>
@@ -35,7 +35,7 @@ export default function Footer() {
             Contact
           </a>
         </nav>
-        <p className="text-xs text-slate-500">© {new Date().getFullYear()} Paige Swain • Sunflower Sanctuary</p>
+        <p className="text-xs text-slate-600">© {new Date().getFullYear()} Paige Swain • Sunflower Sanctuary</p>
       </div>
     </footer>
   );

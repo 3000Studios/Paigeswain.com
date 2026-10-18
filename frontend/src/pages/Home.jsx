@@ -1,12 +1,16 @@
-import { useEffect, useState } from "react";
+import { Suspense, lazy, useEffect, useState } from "react";
 import BlogCard from "../components/BlogCard";
 import Nav from "../components/Nav";
+import SunflowerBackdrop from "../components/SunflowerBackdrop";
+import BooksPromo from "../components/BooksPromo";
 import RecipeCard from "../components/RecipeCard";
 import SunflowerHero from "../components/SunflowerHero";
 import JournalCard from "../components/JournalCard";
-import AnimatedVideoSection from "../components/AnimatedVideoSection";
 import Footer from "../components/Footer";
-import HeartfeltMessages from "../components/HeartfeltMessages";
+
+// Below-the-fold sections load after the hero + books have painted.
+const HeartfeltMessages = lazy(() => import("../components/HeartfeltMessages"));
+const AnimatedVideoSection = lazy(() => import("../components/AnimatedVideoSection"));
 import { usePageMeta } from "../hooks/usePageMeta";
 import { getBlog, getCompliment, getDadJoke, getJournal, getRecipes } from "../lib/api";
 
@@ -26,21 +30,32 @@ export default function Home() {
   useEffect(() => {
     getBlog("mental-health").then((data) => setMentalFeed(data ?? []));
     getBlog("healthy-food").then((data) => setHealthyFeed(data ?? []));
-    getRecipes(true).then((data) => setLatestRecipe(data?.[0] ?? null));
-    getJournal().then((data) => setJournals(data ?? []));
+    getRecipes(true)
+      .then((data) => setLatestRecipe(data?.[0] ?? null))
+      .catch(() => {});
+    getJournal()
+      .then((data) => setJournals(data ?? []))
+      .catch(() => {});
     getDadJoke().then((data) => setDadJoke(data?.joke ?? "")).catch(() => {});
     getCompliment().then((data) => setSmileChallenge(data?.compliment ?? "")).catch(() => {});
   }, []);
 
   return (
-    <div className="min-h-screen bg-cream text-slate-900">
+    <div className="relative min-h-screen text-slate-900">
+      <SunflowerBackdrop />
       <Nav />
       <main className="mx-auto flex max-w-6xl flex-col gap-10 px-6 py-12">
         <SunflowerHero dadJoke={dadJoke} />
 
-        <HeartfeltMessages />
+        <BooksPromo />
 
-        <AnimatedVideoSection />
+        <Suspense fallback={null}>
+          <HeartfeltMessages />
+        </Suspense>
+
+        <Suspense fallback={null}>
+          <AnimatedVideoSection />
+        </Suspense>
 
         <section className="space-y-6 rounded-3xl border border-white/60 bg-white/80 p-6 shadow-lg transition-transform hover:shadow-xl hover:scale-[1.01] duration-500">
           <h2 className="text-3xl font-semibold text-forest flex items-center gap-2">
@@ -62,7 +77,7 @@ export default function Home() {
               </ul>
             </div>
             <div className="group rounded-2xl border border-forest/20 bg-forest/10 p-4 transition-colors hover:bg-forest/20">
-              <p className="text-xs uppercase tracking-[0.3em] text-forest/60">Today&apos;s Smile Challenge</p>
+              <p className="text-xs uppercase tracking-[0.3em] text-forest">Today&apos;s Smile Challenge</p>
               <p className="mt-2 text-lg font-semibold text-forest">{smileChallenge || "Send a hug emoji to someone you love."}</p>
               <div className="mt-2 text-2xl group-hover:scale-125 transition-transform duration-300">🤗</div>
             </div>
@@ -72,7 +87,7 @@ export default function Home() {
         <section className="space-y-6">
           <div className="flex items-center justify-between">
             <h2 className="text-3xl font-semibold text-forest">Fresh from the journal</h2>
-            <span className="text-xs uppercase tracking-[0.4em] text-forest/50">Updated weekly</span>
+            <span className="text-xs uppercase tracking-[0.4em] text-forest/80">Updated weekly</span>
           </div>
           <div className="grid gap-6 lg:grid-cols-2">
             <div className="space-y-4">

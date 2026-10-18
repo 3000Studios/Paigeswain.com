@@ -1,6 +1,7 @@
 import { useEffect, useMemo, useState } from "react";
 import Footer from "../components/Footer";
 import Nav from "../components/Nav";
+import SunflowerBackdrop from "../components/SunflowerBackdrop";
 import RecipeCard from "../components/RecipeCard";
 import { useAuth } from "../hooks/useAuth";
 import { usePageMeta } from "../hooks/usePageMeta";
@@ -63,7 +64,8 @@ export default function PaigesKitchen() {
   };
 
   return (
-    <div className="min-h-screen bg-cream text-slate-900">
+    <div className="relative min-h-screen text-slate-900">
+      <SunflowerBackdrop />
       <Nav />
       <main className="mx-auto max-w-6xl space-y-10 px-6 py-10">
         <header className="space-y-2">
