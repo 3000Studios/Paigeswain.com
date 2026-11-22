@@ -1,10 +1,18 @@
 import { useEffect, useState } from "react";
+import Footer from "../components/Footer";
 import JournalCard from "../components/JournalCard";
 import Nav from "../components/Nav";
+import SunflowerBackdrop from "../components/SunflowerBackdrop";
 import { useAuth } from "../hooks/useAuth";
+import { usePageMeta } from "../hooks/usePageMeta";
 import { getJournal, publishJournal } from "../lib/api";
 
 export default function PaigesShorts() {
+  usePageMeta({
+    title: "Paige's Shorts — Journal & Reflections",
+    description:
+      "Paige's Shorts: warm journal entries, little love notes, and spontaneous poems from Paige Swain.",
+  });
   const { user } = useAuth();
   const [entries, setEntries] = useState([]);
   const [draft, setDraft] = useState("");
@@ -28,7 +36,8 @@ export default function PaigesShorts() {
   };
 
   return (
-    <div className="min-h-screen bg-cream text-slate-900">
+    <div className="relative min-h-screen text-slate-900">
+      <SunflowerBackdrop />
       <Nav />
       <main className="mx-auto max-w-5xl space-y-8 px-6 py-10">
         <header>
@@ -67,6 +76,7 @@ export default function PaigesShorts() {
           ))}
         </section>
       </main>
+      <Footer />
     </div>
   );
 }

@@ -1,4 +1,10 @@
 User-agent: *
 Allow: /
+# Private family areas — keep them out of search indexes.
+Disallow: /login
+Disallow: /family
+Disallow: /game/
+Disallow: /warp
+Disallow: /api/
 
 Sitemap: https://paigeswain.com/sitemap.xml

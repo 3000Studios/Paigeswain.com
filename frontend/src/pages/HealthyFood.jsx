@@ -1,9 +1,18 @@
 import { useEffect, useState } from "react";
 import BlogCard from "../components/BlogCard";
+import Footer from "../components/Footer";
 import Nav from "../components/Nav";
+import SunflowerBackdrop from "../components/SunflowerBackdrop";
+import { usePageMeta } from "../hooks/usePageMeta";
 import { getBlog } from "../lib/api";
+import EditorialSection, { HEALTHY_ARTICLES } from "../components/EditorialSection";
 
 export default function HealthyFood() {
+  usePageMeta({
+    title: "Healthy Food — Kitchen Stories & Quick Meals",
+    description:
+      "Budget-friendly healthy dinners, smoothie boosts, and snack stations the kids can help build — healthy food ideas from Paige's Corner.",
+  });
   const [posts, setPosts] = useState([]);
 
   useEffect(() => {
@@ -11,7 +20,8 @@ export default function HealthyFood() {
   }, []);
 
   return (
-    <div className="min-h-screen bg-cream text-slate-900">
+    <div className="relative min-h-screen text-slate-900">
+      <SunflowerBackdrop />
       <Nav />
       <main className="mx-auto max-w-5xl space-y-8 px-6 py-10">
         <header>
@@ -22,15 +32,13 @@ export default function HealthyFood() {
           </p>
         </header>
         <div className="space-y-6">
-          {posts.length ? (
-            posts.map((post) => <BlogCard key={`healthy-${post.id}`} post={post} />)
-          ) : (
-            <div className="rounded-2xl border border-dashed border-slate-400 bg-white/70 p-6 text-slate-600">
-              Healthy menus are queued up every Sunday for the next week.
-            </div>
-          )}
+          {posts.map((post) => (
+            <BlogCard key={`healthy-${post.id}`} post={post} />
+          ))}
         </div>
+        <EditorialSection articles={HEALTHY_ARTICLES} heading="Kitchen guides from the Corner" />
       </main>
+      <Footer />
     </div>
   );
 }

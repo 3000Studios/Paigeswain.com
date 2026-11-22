@@ -32,8 +32,41 @@ async function request(path, options = {}) {
   return response.json();
 }
 
-export function getBlog(category) {
-  return request(`/api/blog${category ? `?category=${category}` : ""}`);
+function slugify(value) {
+  return String(value ?? "")
+    .toLowerCase()
+    .replace(/[^a-z0-9]+/g, "-")
+    .replace(/^-+|-+$/g, "");
+}
+
+/**
+ * Public blog posts live on the Worker's /api/public/blog rail
+ * ({ posts: [{ id, title, category, excerpt, body, author, createdAt }] }).
+ * Adapt them to the card shape the pages render. Read-only; on any failure
+ * the pages fall back to their empty states, exactly as before.
+ */
+export async function getBlog(category) {
+  try {
+    const data = await request("/api/public/blog");
+    const posts = Array.isArray(data?.posts) ? data.posts : [];
+    const adapted = posts.map((post) => ({
+      id: post.id,
+      title: post.title,
+      category: post.category,
+      author: post.author,
+      content: post.body ?? post.excerpt ?? "",
+      excerpt: post.excerpt ?? "",
+      created_at: post.createdAt ?? post.created_at ?? null,
+    }));
+    if (!category) return adapted;
+    const wanted = slugify(category);
+    return adapted.filter((post) => {
+      const own = slugify(post.category);
+      return own === wanted || own.includes(wanted) || wanted.includes(own);
+    });
+  } catch {
+    return [];
+  }
 }
 
 export function getDadJoke() {

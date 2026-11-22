@@ -1,9 +1,18 @@
 import { useEffect, useState } from "react";
 import BlogCard from "../components/BlogCard";
+import Footer from "../components/Footer";
 import Nav from "../components/Nav";
+import SunflowerBackdrop from "../components/SunflowerBackdrop";
+import { usePageMeta } from "../hooks/usePageMeta";
 import { getBlog } from "../lib/api";
+import EditorialSection, { MENTAL_ARTICLES } from "../components/EditorialSection";
 
 export default function MentalHealth() {
+  usePageMeta({
+    title: "Mental Health — Family Breathing Library",
+    description:
+      "Gentle weekly mental-health exercises for the whole family — breathing, gratitude, and calm routines from Paige's Corner.",
+  });
   const [posts, setPosts] = useState([]);
 
   useEffect(() => {
@@ -11,7 +20,8 @@ export default function MentalHealth() {
   }, []);
 
   return (
-    <div className="min-h-screen bg-cream text-slate-900">
+    <div className="relative min-h-screen text-slate-900">
+      <SunflowerBackdrop />
       <Nav />
       <main className="mx-auto max-w-5xl space-y-8 px-6 py-10">
         <header>
@@ -20,15 +30,13 @@ export default function MentalHealth() {
           <p className="text-sm text-slate-600">Weekly exercises that promote calm, gratitude, and closeness.</p>
         </header>
         <div className="space-y-6">
-          {posts.length ? (
-            posts.map((post) => <BlogCard key={`mental-${post.id}`} post={post} />)
-          ) : (
-            <div className="rounded-2xl border border-dashed border-slate-400 bg-white/70 p-6 text-slate-600">
-              Mental health routines are being generated every Sunday.
-            </div>
-          )}
+          {posts.map((post) => (
+            <BlogCard key={`mental-${post.id}`} post={post} />
+          ))}
         </div>
+        <EditorialSection articles={MENTAL_ARTICLES} heading="Start with these family practices" />
       </main>
+      <Footer />
     </div>
   );
 }
