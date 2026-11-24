@@ -12,7 +12,7 @@ import Footer from "../components/Footer";
 const HeartfeltMessages = lazy(() => import("../components/HeartfeltMessages"));
 const AnimatedVideoSection = lazy(() => import("../components/AnimatedVideoSection"));
 import { usePageMeta } from "../hooks/usePageMeta";
-import { getBlog, getCompliment, getDadJoke, getJournal, getRecipes } from "../lib/api";
+import { getBlog, getCompliment, getJournal, getRecipes } from "../lib/api";
 
 export default function Home() {
   usePageMeta({
@@ -24,7 +24,6 @@ export default function Home() {
   const [healthyFeed, setHealthyFeed] = useState([]);
   const [latestRecipe, setLatestRecipe] = useState(null);
   const [journals, setJournals] = useState([]);
-  const [dadJoke, setDadJoke] = useState("");
   const [smileChallenge, setSmileChallenge] = useState("");
 
   useEffect(() => {
@@ -36,7 +35,6 @@ export default function Home() {
     getJournal()
       .then((data) => setJournals(data ?? []))
       .catch(() => {});
-    getDadJoke().then((data) => setDadJoke(data?.joke ?? "")).catch(() => {});
     getCompliment().then((data) => setSmileChallenge(data?.compliment ?? "")).catch(() => {});
   }, []);
 
@@ -45,7 +43,7 @@ export default function Home() {
       <SunflowerBackdrop />
       <Nav />
       <main className="mx-auto flex max-w-6xl flex-col gap-10 px-6 py-12">
-        <SunflowerHero dadJoke={dadJoke} />
+        <SunflowerHero />
 
         <BooksPromo />
 

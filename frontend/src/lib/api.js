@@ -69,10 +69,6 @@ export async function getBlog(category) {
   }
 }
 
-export function getDadJoke() {
-  return request("/api/joke");
-}
-
 export function getCompliment() {
   return request("/api/compliment");
 }

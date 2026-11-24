@@ -9,7 +9,7 @@ const QUOTES = [
   "Adventure is a family value tag-line.",
 ];
 
-export default function SunflowerHero({ dadJoke }) {
+export default function SunflowerHero() {
   const [index, setIndex] = useState(0);
   useEffect(() => {
     const id = setInterval(() => {
@@ -45,10 +45,6 @@ export default function SunflowerHero({ dadJoke }) {
           <div className="rounded-2xl bg-white/80 p-4 text-sm text-slate-700 shadow-inner">
             <p className="text-xs uppercase tracking-[0.35em] text-amber-800">Floating quote</p>
             <p className="text-xl font-semibold text-forest">{quote}</p>
-          </div>
-          <div className="rounded-2xl bg-forest/90 p-4 text-cream shadow-lg">
-            <p className="text-xs font-medium uppercase tracking-[0.4em] text-cream/70">Dad joke</p>
-            <p className="mt-1 text-base font-semibold text-cream">{dadJoke ?? "Brewing kindness in progress..."}</p>
           </div>
         </div>
       </div>
